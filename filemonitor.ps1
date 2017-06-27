@@ -23,6 +23,7 @@ Register-ObjectEvent $fsw Created -SourceIdentifier FileCreated -Action{
     $timeStamp = $Event.TimeGenerated
     Write-Host "The file '$name' was $changeType at $timeStamp"
     Copy-Item -Path $Event.SourceEventArgs.FullPath -Destination  $dstfolder -Force
+}
 
 # To list the events that have been registered in PoSH: Get-EventSubscriber 
 # To cancel FileUpdated event: Unregister-Event FileUpdated
