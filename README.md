@@ -14,8 +14,8 @@ This means that if there are 2 files named the same in the two different directo
 
 - Source and destination folders need to be created first or the script will fail.
 
-#Resources used
-Props to the person that wrote the script (cannot remember where I found it)
-https://stackoverflow.com/questions/16426688/passing-a-variable-to-a-powershell-script-via-command-line
-https://devcentral.f5.com/articles/powershell-abcs-p-is-for-parameters
-https://technet.microsoft.com/en-us/library/jj554301.aspx
+# Resources used
+- Props to the person that wrote the script (cannot remember where I found it)
+- https://stackoverflow.com/questions/16426688/passing-a-variable-to-a-powershell-script-via-command-line
+- https://devcentral.f5.com/articles/powershell-abcs-p-is-for-parameters
+- https://technet.microsoft.com/en-us/library/jj554301.aspx
