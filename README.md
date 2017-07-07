@@ -7,9 +7,6 @@ Seems to only work via a cmd window that has been elevated.
   Type the following in the cmd window: powershell -noexit -file <PATH TO THE SCRIPT> filecopy.ps1 -srcfolder <PATH TO SOURCE FOLDER> -dstfolder <PATH TO DESTINATION FOLDER> and hit enter.
   
 #Known issues
-- It will copy a folder that is created in the source folder to the destination folder, but any files created under that new folder in the source just get copied over to the destination folder - not under the folder.
-This means that if there are 2 files named the same in the two different directories, the older file will get overwritten.
-
 - It will monitor ONLY one source folder currently. The work around is to run multiple instances of the script pointing to the different folders you want monitored (ie: C:\Users\%usernamee%\AppData\Roaming and C:\Users\%usernamee%\AppData\Local\Temp).
 
 - Source and destination folders need to be created first or the script will fail.
@@ -19,3 +16,6 @@ This means that if there are 2 files named the same in the two different directo
 - https://stackoverflow.com/questions/16426688/passing-a-variable-to-a-powershell-script-via-command-line
 - https://devcentral.f5.com/articles/powershell-abcs-p-is-for-parameters
 - https://technet.microsoft.com/en-us/library/jj554301.aspx
+
+# Fixed
+2017-07-06: Script now copies ALL of the source folder to the destination folder and updates accordingly. 

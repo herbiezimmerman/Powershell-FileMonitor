@@ -1,11 +1,11 @@
 Param(
     [Parameter(Mandatory=$True,Position=0)]
-        [string]$srcfolder, #Add whatever source folder here    
-    [Parameter(Mandatory=$True,Position=2)]
+        [string]$srcfolder, #Add whatever source folder here  
+    [Parameter(Mandatory=$True,Position=1)]
         [string]$dstfolder #Add whatever destination folder here
 )
 
-$filter = '*.*'
+$filter = '*'
 
 $fsw = New-Object IO.FileSystemWatcher $srcfolder, $filter -Property @{IncludeSubdirectories = $true;NotifyFilter = [IO.NotifyFilters]'FileName, LastWrite'}
 
@@ -14,7 +14,7 @@ Register-ObjectEvent $fsw Changed -SourceIdentifier FileUpdated -Action{
     $changeType = $Event.SourceEventArgs.ChangeType
     $timeStamp = $Event.TimeGenerated
     Write-Host "The file '$name' was $changeType at $timeStamp"
-    Copy-Item -Path $Event.SourceEventArgs.FullPath -Destination  $dstfolder -Force
+    Copy-Item $srcfolder $dstfolder -recurse -Force
 }
 
 Register-ObjectEvent $fsw Created -SourceIdentifier FileCreated -Action{
@@ -22,7 +22,7 @@ Register-ObjectEvent $fsw Created -SourceIdentifier FileCreated -Action{
     $changeType = $Event.SourceEventArgs.ChangeType
     $timeStamp = $Event.TimeGenerated
     Write-Host "The file '$name' was $changeType at $timeStamp"
-    Copy-Item -Path $Event.SourceEventArgs.FullPath -Destination  $dstfolder -Force
+    Copy-Item $srcfolder $dstfolder -recurse -Force
 }
 
 # To list the events that have been registered in PoSH: Get-EventSubscriber 
